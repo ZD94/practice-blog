@@ -9,6 +9,7 @@ const setting = require('../setting');
 mongoose.Promise = global.Promise
 mongoose.connect(`mongodb://${setting.host}/${setting.db}`);
 
+
 const DbSet = {
     //新增操作
     addOne: (obj, req, res, logMsg) => {
@@ -50,7 +51,7 @@ const DbSet = {
         }).catch(err => {
             res.end(err)
         })
-    }
+    },
     //查询所有的
     findAll:(obj, req, res, logMsg)=>{
         obj.find({}).then(result => {

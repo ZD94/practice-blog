@@ -9,6 +9,7 @@ const catSchema = new Schema({
     name: String,
     _id:{
         type:String,
+        //默认值ID
         default:shortid.generate
     }
     //在这里，我们可以对这个模型的数据类型进行设置

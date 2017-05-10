@@ -28,7 +28,7 @@ const ReplySchema = new Schema({
     //回复的内容
     reply_content:{
         type:String,
-    },
+    }
 
 })
 

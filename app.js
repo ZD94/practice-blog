@@ -5,8 +5,10 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 //引入routes.js路由文件
-const routes = require('./routes')
+const routes = require('./routes');
+//测试数据库是否链接成功
 
+const db = require('./model/db');
 const app = express();
 
 // view engine setup

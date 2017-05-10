@@ -1,17 +1,16 @@
 /**
- * Created by Administrator on 2017/5/10.
+ * Created by hama on 2017/5/10.
  */
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-const shortid = require('shortid')
-
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const shortid = require('shortid');
 const ArticleSchema = new Schema({
     _id: {
         type: String,
         default: shortid.generate,
         unique: true
     },
-    //文章标题
+    //文章的标题
     title: {
         type: String,
         require: true
@@ -33,7 +32,7 @@ const ArticleSchema = new Schema({
     },
     //标签
     tags: String,
-    //浏览量
+    //点击量
     clickNum: {
         type: Number,
         default: 0,
@@ -47,17 +46,17 @@ const ArticleSchema = new Schema({
         min: 0,
         max: 100000
     },
-    //作者
-    author:{
-        type:String,
-        ref:'User'//文章的作者
+    //作者,它应该一个user表中的数据
+    author: {
+        type: String,
+        ref: 'User' //文章的作者
     },
-    //文章分类
-    category:{
-        type:String,
-        ref:'Category'//文章的分类
+    //文章的分类
+    category: {
+        type: String,
+        ref: 'Category' //文章的分类
     }
 })
-
-const Article = mongoose.model('Article', ArticleSchema)
+const Article = mongoose.model('Article', ArticleSchema);
 module.exports = Article
+

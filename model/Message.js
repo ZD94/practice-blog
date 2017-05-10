@@ -1,48 +1,48 @@
 /**
- * Created by Administrator on 2017/5/10.
+ * Created by hama on 2017/5/10.
  */
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-const shortid = require('shortid')
-
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const shortid = requrie('shortid');
 const MessageSchema = new Schema({
-    _id:{
-        type:String,
-        default:shortid.generate,
-        unique:true
+    _id: {
+        type: String,
+        default: shortid.generate,
+        unique: true
     },
     //留言的内容
-    content:{
-        type:String,
-        require:true
+    content: {
+        type: String,
+        require: true,
+        default: '请输入留言的内容...'
     },
     //留言的时间
-    createtime:{
-        type:Date,
-        default:Date.now
+    createtime: {
+        type: Date,
+        default: Date.now
     },
     //留言的作者
-    author:{
-        type:String,
-        ref:'User'//文章的作者
+    author: {
+        type: String,
+        ref: 'User' //关联用户表
     },
-    //回复某个人
-    replyId:{
-        type:String,
-        ref:'Reply'
+    //被回复人的ID
+    replyAuthor: {
+        type: String,
+        ref: 'User'
     },
-    //留言对应的文章
-    articleId:{
-        type:String,
-        ref:'Article'
+    //是不是针对某条留言进行回复的.
+    relationMsgId: String,
+    //留言的对应文章
+    article_id: {
+        type: String,
+        ref: 'Article'
     },
-    //是否已读
-    has_read:{
-        type:Number,
-        default:false
+    //点赞
+    praiseNum: {
+        type: Number,
+        default: 0
     }
-
 })
-
-const Message = mongoose.model('Message', MessageSchema)
+const Message = mongoose.model('Message', MessageSchema);
 module.exports = Message
